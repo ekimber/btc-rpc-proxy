@@ -6,7 +6,7 @@ authors = [
 description = "Finer-grained permission management for bitcoind."
 edition = "2018"
 name = "btc-rpc-proxy"
-version = "0.3.1"
+version = "0.3.2"
 
 [lib]
 name = "btc_rpc_proxy"
@@ -37,7 +37,14 @@ enum_future = "0.1"
 futures = "0.3.12"
 hex = "0.4.2"
 http = "0.2.3"
-hyper = { version = "0.14.4", features = ["client", "server", "stream", "http2", "http1", "tcp"] }
+hyper = { version = "0.14.4", features = [
+  "client",
+  "server",
+  "stream",
+  "http2",
+  "http1",
+  "tcp",
+] }
 itertools = "0.10.0"
 lazy_static = "1.4.0"
 linear-map = { version = "1.2.0", features = ["serde_impl"] }
@@ -51,15 +58,25 @@ tokio = { version = "1.0.2", features = ["full"] }
 tokio-compat-02 = "0.2"
 tokio_02 = { version = "0.2.22", package = "tokio", features = ["stream"] }
 thiserror = "1.0.22"
-systemd_socket = { version = "0.1.1", default-features = false, features = ["tokio_0_2"] }
+systemd_socket = { version = "0.1.1", default-features = false, features = [
+  "tokio_0_2",
+] }
 
 [build-dependencies]
 configure_me_codegen = "0.4.0"
 
 [package.metadata.deb]
 assets = [
-  ["target/release/btc_rpc_proxy", "usr/bin/btc_rpc_proxy", "755"],
-  ["target/man/btc_rpc_proxy.1", "usr/bin/btc_rpc_proxy", "644"],
+  [
+    "target/release/btc_rpc_proxy",
+    "usr/bin/btc_rpc_proxy",
+    "755",
+  ],
+  [
+    "target/man/btc_rpc_proxy.1",
+    "usr/bin/btc_rpc_proxy",
+    "644",
+  ],
 ]
 extended-description = """
 This is a proxy made specifically for `bitcoind` to allow finer-grained control of permissions. It enables you to specify several users and for each user the list of RPC calls he's allowed to make.
