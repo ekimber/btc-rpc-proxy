@@ -1,0 +1,9 @@
+[Unit]
+Description=BTC RPC Proxy
+
+[Service]
+DynamicUser=yes
+ExecStart=@proxy@/bin/btc_rpc_proxy --conf /etc/btc_rpc_proxy/config.toml
+
+[Install]
+WantedBy=multi-user.target
